@@ -27,6 +27,9 @@ jobs:
       run:
         working-directory: apps
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -39,9 +42,6 @@ jobs:
       - name: Install hexo
         run: npm install -g hexo-cli
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Build
         run: hexo g
 
@@ -53,3 +53,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
